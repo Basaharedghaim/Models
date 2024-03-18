@@ -1,8 +1,11 @@
 package models;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public class Book {
      private static int lastAssignedId=1;
      private final int id;
+     @Schema(name = " BookTitle",example = "House Of Dragons")
      private String title;
      private String authorName;
      private Types types;
