@@ -1,4 +1,8 @@
-package models;
+package com.models.demo.models.entity;
+
+import com.models.demo.models.entity.Account;
+import jakarta.persistence.Entity;
+
 
 public class Request {
     private String customerName;

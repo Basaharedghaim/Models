@@ -1,4 +1,7 @@
-package models;
+package com.models.demo.models.entity;
+
+import jakarta.persistence.Entity;
+
 
 public class Account {
     private Customer customer;

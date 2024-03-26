@@ -1,4 +1,6 @@
-package models;
+package com.models.demo.models.entity;
+
+import jakarta.persistence.Entity;
 
 import java.util.Date;
 

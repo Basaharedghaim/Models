@@ -1,29 +1,44 @@
-package models;
+package com.models.demo.models.entity;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
 public class Book {
-     private static int lastAssignedId=1;
-     private final int id;
+     @Id
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
+     private  Long id;
      @Schema(name = " BookTitle",example = "House Of Dragons")
      private String title;
      private String authorName;
+     @Enumerated(EnumType.STRING)
      private Types types;
      private double price;
+     @ManyToMany
+     private Set<Customer> customers = new HashSet<>();
 
      public Book() {
-          this.id=lastAssignedId++;
      }
 
-     public Book(String title, String authorName, Types types,double price) {
-          this();
+     public Book(String title, String authorName, Types types, double price) {
           this.title = title;
           this.authorName = authorName;
           this.types = types;
           this.price=price;
      }
 
-     public  int getId() {
+     public Set<Customer> getCustomers() {
+          return customers;
+     }
+
+     public void setCustomers(Set<Customer> customers) {
+          this.customers = customers;
+     }
+
+     public  Long getId() {
           return id;
      }
 
