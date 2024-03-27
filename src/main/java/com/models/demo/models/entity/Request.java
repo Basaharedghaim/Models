@@ -8,14 +8,16 @@ public class Request {
     private String customerName;
     private double amount;
     private Account account;
+    private Book book;
 
     public Request() {
     }
 
-    public Request(String customerName, double amount, Account account) {
+    public Request(String customerName, double amount, Account account,Book book) {
         this.customerName = customerName;
         this.amount = amount;
         this.account = account;
+        this.book=book;
     }
 
     public String getCustomerName() {
@@ -40,6 +42,14 @@ public class Request {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     @Override
