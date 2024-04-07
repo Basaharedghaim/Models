@@ -8,6 +8,7 @@ public class Account {
     private long accNumber;
     private int visaCard;
 
+
     public Account() {
     }
 

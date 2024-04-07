@@ -14,7 +14,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(name = " Id",example = "1")
-    private int id;
+    private Long id;
     @Schema(name = "first Name",example = "John")
            private String firstName;
     @Schema(name = "Last Name",example = "Doe")
@@ -24,6 +24,7 @@ public class Customer {
 
     @Schema(name = "email",example = "JohnDoe@gmail.com")
            private String email;
+           private double balance;
 
     @ManyToMany
     private Set<Book> books = new HashSet<>();
@@ -31,11 +32,12 @@ public class Customer {
             public Customer() {
             }
 
-            public Customer(String firstName, String lastName, String gender,String email) {
+            public Customer(String firstName, String lastName, String gender,String email,double balance) {
                 this.firstName = firstName;
                 this.lastName = lastName;
                 this.gender = gender;
                 this.email=email;
+                this.balance=balance;
             }
 
     public Set<Book> getBooks() {
@@ -46,7 +48,7 @@ public class Customer {
         this.books = books;
     }
 
-    public int getId() {
+    public Long getId() {
                 return id;
             }
 
@@ -74,14 +76,21 @@ public class Customer {
                 this.gender = gender;
             }
 
+            public double getBalance() {
+                return balance;
+            }
 
-    public String getEmail() {
-        return email;
-    }
+            public void setBalance(double balance) {
+                this.balance = balance;
+            }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+            public String getEmail() {
+                return email;
+            }
+
+            public void setEmail(String email) {
+                this.email = email;
+            }
 
 
 }

@@ -1,5 +1,7 @@
 package com.models.demo.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.models.demo.models.entity.Account;
 import jakarta.persistence.Entity;
 
@@ -8,16 +10,15 @@ public class Request {
     private String customerName;
     private double amount;
     private Account account;
-    private Book book;
 
     public Request() {
     }
 
-    public Request(String customerName, double amount, Account account,Book book) {
+    public Request(String customerName, double amount, Account account) {
         this.customerName = customerName;
         this.amount = amount;
         this.account = account;
-        this.book=book;
+
     }
 
     public String getCustomerName() {
@@ -44,13 +45,9 @@ public class Request {
         this.account = account;
     }
 
-    public Book getBook() {
-        return book;
-    }
 
-    public void setBook(Book book) {
-        this.book = book;
-    }
+
+
 
     @Override
     public String toString() {
