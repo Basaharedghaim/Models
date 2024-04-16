@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -79,5 +80,20 @@ public class Book {
                   ", types=" + types +
                   ", price=" + price +
                   '}';
+     }
+     @Override
+     public boolean equals(Object o) {
+          if (this == o) return true;
+          if (o == null || getClass() != o.getClass()) return false;
+          Book book = (Book) o;
+          return Double.compare(book.price, price) == 0 &&
+                  Objects.equals(title, book.title) &&
+                  types == book.types &&
+                  Objects.equals(authorName, book.authorName);
+     }
+
+     @Override
+     public int hashCode() {
+          return Objects.hash(title, types, authorName, price);
      }
 }
