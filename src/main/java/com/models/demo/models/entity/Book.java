@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-public class Book {
+public class Book implements Comparable<Book> {
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
      private  Long id;
@@ -81,19 +81,32 @@ public class Book {
                   ", price=" + price +
                   '}';
      }
-     @Override
      public boolean equals(Object o) {
-          if (this == o) return true;
-          if (o == null || getClass() != o.getClass()) return false;
-          Book book = (Book) o;
-          return Double.compare(book.price, price) == 0 &&
-                  Objects.equals(title, book.title) &&
-                  types == book.types &&
-                  Objects.equals(authorName, book.authorName);
+          if (this == o) {
+               return true;
+          } else if (o != null && this.getClass() == o.getClass()) {
+               Book book = (Book)o;
+               // Check for null values and then compare
+               return Objects.equals(this.title, book.title) && Objects.equals(this.authorName, book.authorName);
+          } else {
+               return false;
+          }
      }
 
-     @Override
      public int hashCode() {
-          return Objects.hash(title, types, authorName, price);
+          // Use Objects.hash() to handle null values
+          return Objects.hash(this.title, this.authorName);
      }
-}
+
+
+
+     @Override
+               public int compareTo(Book that) {
+          if(this.price==that.price)
+               return 0;
+          else if (this.price>that.price) {
+               return 1;
+          }
+          else return -1;
+               }
+          }
